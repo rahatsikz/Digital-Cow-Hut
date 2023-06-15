@@ -3,6 +3,10 @@ import config from "../../config/index";
 import { IGenericErrorMessage } from "../../interface/IGenericErrorMessage";
 import ApiError from "../../errors/ApiError";
 import { handleValidationError } from "../../errors/handleValidationError";
+import { ZodError } from "zod";
+import { handleZodError } from "../../errors/handleZodError";
+import { handleCastError } from "../../errors/handleCastError";
+
 export const globalErrorHandler: ErrorRequestHandler = (
   err,
   req,
@@ -18,8 +22,14 @@ export const globalErrorHandler: ErrorRequestHandler = (
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
+  } else if (err instanceof ZodError) {
+    // console.log(err);
+    const simplifiedError = handleZodError(err);
+    statusCode = simplifiedError.statusCode;
+    message = simplifiedError.message;
+    errorMessages = simplifiedError.errorMessages;
   } else if (err.name === "CastError ") {
-    const simplifiedError = handleValidationError(err);
+    const simplifiedError = handleCastError(err);
     statusCode = simplifiedError.statusCode;
     message = simplifiedError.message;
     errorMessages = simplifiedError.errorMessages;
