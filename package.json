@@ -18,9 +18,11 @@
     "http-status": "^1.6.2",
     "mongodb": "^5.6.0",
     "mongoose": "^7.3.0",
-    "ts-node-dev": "^2.0.0"
+    "ts-node-dev": "^2.0.0",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17"
   }
 }
