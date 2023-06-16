@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Breed, Category, Label, Location } from "./cow.constant";
+import { Category, Label, Location } from "./cow.constant";
 
 const createCowZodSchema = z.object({
   body: z.object({
@@ -9,7 +9,7 @@ const createCowZodSchema = z.object({
     location: z.enum([...Object.values(Location)] as [string, ...string[]], {
       required_error: "location is required",
     }),
-    breed: z.enum([...Object.values(Breed)] as [string, ...string[]], {
+    breed: z.string({
       required_error: "breed is required",
     }),
     weight: z.number({ required_error: "weight is required" }).positive(),

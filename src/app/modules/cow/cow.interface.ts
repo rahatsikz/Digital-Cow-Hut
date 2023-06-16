@@ -1,5 +1,5 @@
 import { Model, Types } from "mongoose";
-import { Breed, Category, Label } from "./cow.constant";
+import { Category, Label } from "./cow.constant";
 import { number } from "zod";
 
 export type ICow = {
@@ -7,7 +7,7 @@ export type ICow = {
   age: number;
   price: number;
   location: Location;
-  breed: Breed;
+  breed: string;
   weight: number;
   label: Label;
   category: Category;

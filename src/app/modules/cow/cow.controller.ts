@@ -28,13 +28,25 @@ const getAllCows = catchAsync(async (req: Request, res: Response) => {
   sendResponse<ICow[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Cow created Successfully",
+    message: "Cows retrieved Successfully",
     meta: result.meta,
     data: result.data,
+  });
+});
+
+const getSingleCow = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = await CowService.getSingleCow(id);
+  sendResponse<ICow>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Cow retrieved Successfully",
+    data: result,
   });
 });
 
 export const CowController = {
   createCow,
   getAllCows,
+  getSingleCow,
 };
