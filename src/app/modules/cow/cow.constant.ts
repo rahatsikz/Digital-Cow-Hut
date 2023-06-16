@@ -29,3 +29,14 @@ export enum Category {
   Beef = "Beef",
   DualPurpose = "Dual Purpose",
 }
+
+export const paginationFields = ["page", "limit", "sortBy", "sortOrder"];
+
+export const cowFilterableFields = [
+  "minPrice",
+  "maxPrice",
+  "location",
+  "searchTerm",
+];
+
+export const cowSearchableFields = ["location", "breed", "category"];

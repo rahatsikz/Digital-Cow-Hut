@@ -10,5 +10,6 @@ router.post(
   validateRequest(CowValidate.createCowZodSchema),
   CowController.createCow
 );
+router.get("/", CowController.getAllCows);
 
 export const CowRoutes = router;
