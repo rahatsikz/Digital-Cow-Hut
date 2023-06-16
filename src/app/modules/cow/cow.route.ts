@@ -1,0 +1,14 @@
+import express from "express";
+import { validateRequest } from "../../middleware/validateRequest";
+import { CowValidate } from "./cow.validate";
+import { CowController } from "./cow.controller";
+
+const router = express.Router();
+
+router.post(
+  "/create-cow",
+  validateRequest(CowValidate.createCowZodSchema),
+  CowController.createCow
+);
+
+export const CowRoutes = router;
