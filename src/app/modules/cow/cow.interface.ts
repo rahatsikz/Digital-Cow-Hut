@@ -1,6 +1,5 @@
 import { Model, Types } from "mongoose";
-import { Category, Label } from "./cow.constant";
-import { number } from "zod";
+import { Category, Label, Location } from "./cow.constant";
 
 export type ICow = {
   name: string;
