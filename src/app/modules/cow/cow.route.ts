@@ -11,6 +11,7 @@ router.patch(
   validateRequest(CowValidate.updateCowZodSchema),
   CowController.updateSingleCow
 );
+router.delete("/:id", CowController.deleteCow);
 router.post(
   "/create-cow",
   validateRequest(CowValidate.createCowZodSchema),

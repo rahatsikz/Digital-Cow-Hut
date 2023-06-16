@@ -97,9 +97,15 @@ const updateSingleCow = async (
   return result;
 };
 
+const deleteCow = async (id: string) => {
+  const result = await Cow.findByIdAndDelete(id);
+  return result;
+};
+
 export const CowService = {
   createCow,
   getAllCows,
   getSingleCow,
   updateSingleCow,
+  deleteCow,
 };
