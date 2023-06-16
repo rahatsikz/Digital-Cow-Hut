@@ -23,6 +23,27 @@ const createCowZodSchema = z.object({
   }),
 });
 
+const updateCowZodSchema = z.object({
+  body: z.object({
+    name: z.string().optional(),
+    age: z.number().positive().optional(),
+    price: z.number().positive().optional(),
+    location: z
+      .enum([...Object.values(Location)] as [string, ...string[]])
+      .optional(),
+    breed: z.string().optional(),
+    weight: z.number().positive().optional(),
+    label: z
+      .enum([...Object.values(Label)] as [string, ...string[]])
+      .optional(),
+    category: z
+      .enum([...Object.values(Category)] as [string, ...string[]])
+      .optional(),
+    seller: z.string().optional(),
+  }),
+});
+
 export const CowValidate = {
   createCowZodSchema,
+  updateCowZodSchema,
 };

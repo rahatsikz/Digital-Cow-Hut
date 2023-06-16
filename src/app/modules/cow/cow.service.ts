@@ -6,6 +6,8 @@ import { Cow } from "./cow.model";
 import { cowSearchableFields } from "./cow.constant";
 import { IPaginationResponse } from "../../../interface/IPaginationResponse";
 import { object } from "zod";
+import ApiError from "../../../errors/ApiError";
+import httpStatus from "http-status";
 
 const createCow = async (payload: ICow): Promise<ICow> => {
   const result = (await Cow.create(payload)).populate("seller");
@@ -75,7 +77,23 @@ const getAllCows = async (
 };
 
 const getSingleCow = async (id: string): Promise<ICow | null> => {
-  const result = await Cow.findById(id);
+  const result = await Cow.findById(id).populate("seller");
+  return result;
+};
+
+const updateSingleCow = async (
+  id: string,
+  payload: Partial<ICow>
+): Promise<ICow | null> => {
+  const isExists = await Cow.findById(id);
+  if (!isExists) {
+    throw new ApiError(httpStatus.NOT_FOUND, "User can not be found");
+  }
+
+  const result = await Cow.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  }).populate("seller");
+
   return result;
 };
 
@@ -83,4 +101,5 @@ export const CowService = {
   createCow,
   getAllCows,
   getSingleCow,
+  updateSingleCow,
 };
