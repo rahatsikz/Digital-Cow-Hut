@@ -6,8 +6,6 @@ import { IOrder } from "./order.interface";
 import { Order } from "./order.model";
 import mongoose from "mongoose";
 import { Label } from "../cow/cow.constant";
-import { ICow } from "../cow/cow.interface";
-import { IUser } from "../user/user.interface";
 
 const createOrder = async (payload: IOrder) => {
   //   const result = await Order.create(payload);
@@ -95,6 +93,19 @@ const createOrder = async (payload: IOrder) => {
   return orderData;
 };
 
+const getAllOrders = async (): Promise<IOrder[]> => {
+  const result = await Order.find({}).populate([
+    {
+      path: "cow",
+    },
+    {
+      path: "buyer",
+    },
+  ]);
+  return result;
+};
+
 export const OrderService = {
   createOrder,
+  getAllOrders,
 };
