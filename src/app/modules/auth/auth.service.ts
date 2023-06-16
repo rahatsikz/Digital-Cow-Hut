@@ -6,6 +6,6 @@ const createUser = async (payload: IUser): Promise<IUser> => {
   return createdUser;
 };
 
-export const AuthServie = {
+export const AuthService = {
   createUser,
 };

@@ -30,7 +30,7 @@ const sendResponse_1 = require("../../../shared/sendResponse");
 const http_status_1 = __importDefault(require("http-status"));
 const createUser = (0, catchAsync_1.catchAsync)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = __rest(req.body, []);
-    const result = yield auth_service_1.AuthServie.createUser(user);
+    const result = yield auth_service_1.AuthService.createUser(user);
     (0, sendResponse_1.sendResponse)(res, {
         statusCode: http_status_1.default.OK,
         success: true,

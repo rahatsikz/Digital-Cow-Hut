@@ -9,12 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AuthServie = void 0;
+exports.AuthService = void 0;
 const user_model_1 = require("../user/user.model");
 const createUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const createdUser = yield user_model_1.User.create(payload);
     return createdUser;
 });
-exports.AuthServie = {
+exports.AuthService = {
     createUser,
 };

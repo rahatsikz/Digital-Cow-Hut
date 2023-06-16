@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { catchAsync } from "../../../shared/catchAsync";
-import { AuthServie } from "./auth.service";
+import { AuthService } from "./auth.service";
 import { sendResponse } from "../../../shared/sendResponse";
 import { IUser } from "../user/user.interface";
 import httpStatus from "http-status";
@@ -8,7 +8,7 @@ import httpStatus from "http-status";
 const createUser = catchAsync(async (req: Request, res: Response) => {
   const { ...user } = req.body;
 
-  const result = await AuthServie.createUser(user);
+  const result = await AuthService.createUser(user);
 
   sendResponse<IUser>(res, {
     statusCode: httpStatus.OK,
