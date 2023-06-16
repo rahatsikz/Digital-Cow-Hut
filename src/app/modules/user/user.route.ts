@@ -6,6 +6,11 @@ import { UserValidate } from "./user.validate";
 const router = express.Router();
 
 router.get("/:id", UserController.getSingleUser);
+router.patch(
+  "/:id",
+  validateRequest(UserValidate.updateUserZodSchema),
+  UserController.updateSingleUser
+);
 router.post(
   "/create-user",
   validateRequest(UserValidate.createUserZodSchema),
