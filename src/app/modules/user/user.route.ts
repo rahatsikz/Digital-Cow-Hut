@@ -11,6 +11,7 @@ router.patch(
   validateRequest(UserValidate.updateUserZodSchema),
   UserController.updateSingleUser
 );
+router.delete("/:id", UserController.deleteUser);
 router.post(
   "/create-user",
   validateRequest(UserValidate.createUserZodSchema),

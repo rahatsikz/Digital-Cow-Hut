@@ -44,9 +44,15 @@ const updateSingleUser = async (
   return result;
 };
 
+const deleteUser = async (id: string) => {
+  const result = await User.findByIdAndDelete(id);
+  return result;
+};
+
 export const UserService = {
   createUser,
   getAllUsers,
   getSingleUser,
   updateSingleUser,
+  deleteUser,
 };
