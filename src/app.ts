@@ -24,6 +24,11 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
   //   throw new ApiError(400, "Error Happened");
   //   next("error ashse");
   //   throw new ValidationError();
+  res.status(httpStatus.OK).json({
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Welcome to Digital Cow Hut",
+  });
 });
 
 // error handler middleware

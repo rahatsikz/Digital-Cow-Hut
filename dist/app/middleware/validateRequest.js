@@ -8,25 +8,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = require("mongoose");
-const app_1 = __importDefault(require("./app"));
-const index_1 = __importDefault(require("./config/index"));
-function mainFunc() {
-    return __awaiter(this, void 0, void 0, function* () {
+exports.validateRequest = void 0;
+const validateRequest = (schema) => {
+    return (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            yield (0, mongoose_1.connect)(index_1.default.database_url);
-            console.log("🔋 Database Connected");
-            app_1.default.listen(index_1.default.port, () => {
-                console.log(`Digital Cow Hut listening on port ${index_1.default.port}`);
+            yield schema.parseAsync({
+                body: req.body,
+                query: req.query,
+                params: req.params,
+                cookies: req.cookies,
             });
+            return next();
         }
         catch (error) {
-            console.log(error);
+            next(error);
         }
     });
-}
-mainFunc();
+};
+exports.validateRequest = validateRequest;
