@@ -8,7 +8,7 @@
 
 ### User
 
-- Create User (Post): https://digital-cow-hut.vercel.app/api/v1/auth/signup
+- Create User (Post) : https://digital-cow-hut.vercel.app/api/v1/auth/signup
 - Get All Users (Get) : https://digital-cow-hut.vercel.app/api/v1/users
 - Get Single User by ID (Get) : https://digital-cow-hut.vercel.app/api/v1/users/648c47d56be1c468c0ca8450
 - Update User by ID (Patch) : https://digital-cow-hut.vercel.app/api/v1/users/648c47d56be1c468c0ca8450
@@ -29,3 +29,8 @@
 - minPrice and maxPrice : https://digital-cow-hut.vercel.app/api/v1/cows?minPrice=30000&maxPrice=70000
 - location : https://digital-cow-hut.vercel.app/api/v1/cows?location=Rajshahi
 - searchTerm : https://digital-cow-hut.vercel.app/api/v1/cows?searchTerm=sahi
+
+### Orders
+
+- Create Order (Post) : https://digital-cow-hut.vercel.app/api/v1/orders/create-order
+- Get All Orders (Get) : https://digital-cow-hut.vercel.app/api/v1/orders
