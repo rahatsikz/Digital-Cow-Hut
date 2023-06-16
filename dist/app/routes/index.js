@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 const user_route_1 = require("../modules/user/user.route");
 const cow_route_1 = require("../modules/cow/cow.route");
 const order_route_1 = require("../modules/order/order.route");
-const auth_route_1 = require("../modules/user/auth.route");
+const auth_route_1 = require("../modules/auth/auth.route");
 const router = express_1.default.Router();
 const moduleRoutes = [
     {

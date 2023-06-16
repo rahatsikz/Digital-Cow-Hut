@@ -23,43 +23,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserService = void 0;
+exports.AuthController = void 0;
+const catchAsync_1 = require("../../../shared/catchAsync");
+const auth_service_1 = require("./auth.service");
+const sendResponse_1 = require("../../../shared/sendResponse");
 const http_status_1 = __importDefault(require("http-status"));
-const ApiError_1 = __importDefault(require("../../../errors/ApiError"));
-const user_model_1 = require("./user.model");
-const getAllUsers = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_model_1.User.find({});
-    return result;
-});
-const getSingleUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_model_1.User.findById(id);
-    return result;
-});
-const updateSingleUser = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const isExists = yield user_model_1.User.findById(id);
-    if (!isExists) {
-        throw new ApiError_1.default(http_status_1.default.NOT_FOUND, "User can not be found");
-    }
-    const { name } = payload, userData = __rest(payload, ["name"]);
-    const userDataUpdate = Object.assign({}, userData);
-    if (name && Object.keys(name).length) {
-        Object.keys(name).forEach((key) => {
-            const nameKey = `name.${key}`;
-            userDataUpdate[nameKey] = name[key];
-        });
-    }
-    const result = yield user_model_1.User.findOneAndUpdate({ _id: id }, userDataUpdate, {
-        new: true,
+const createUser = (0, catchAsync_1.catchAsync)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = __rest(req.body, []);
+    const result = yield auth_service_1.AuthServie.createUser(user);
+    (0, sendResponse_1.sendResponse)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: "User created Successfully",
+        data: result,
     });
-    return result;
-});
-const deleteUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_model_1.User.findByIdAndDelete(id);
-    return result;
-});
-exports.UserService = {
-    getAllUsers,
-    getSingleUser,
-    updateSingleUser,
-    deleteUser,
+}));
+exports.AuthController = {
+    createUser,
 };

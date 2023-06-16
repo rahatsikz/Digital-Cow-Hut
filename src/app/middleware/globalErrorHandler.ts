@@ -60,6 +60,6 @@ export const globalErrorHandler: ErrorRequestHandler = (
     success: false,
     message: message,
     errorMessages: errorMessages,
-    stack: config.env !== "Production" ? err?.stack : undefined,
+    stack: err?.stack,
   });
 };
