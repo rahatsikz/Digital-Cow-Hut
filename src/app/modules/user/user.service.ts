@@ -3,11 +3,6 @@ import ApiError from "../../../errors/ApiError";
 import { IUser } from "./user.interface";
 import { User } from "./user.model";
 
-const createUser = async (payload: IUser): Promise<IUser> => {
-  const createdUser = await User.create(payload);
-  return createdUser;
-};
-
 const getAllUsers = async (): Promise<IUser[]> => {
   const result = await User.find({});
   return result;
@@ -50,7 +45,6 @@ const deleteUser = async (id: string) => {
 };
 
 export const UserService = {
-  createUser,
   getAllUsers,
   getSingleUser,
   updateSingleUser,
