@@ -7,6 +7,7 @@ const cowSchema = new Schema<ICow>(
     name: {
       type: String,
       required: true,
+      unique: true,
     },
     age: {
       type: Number,

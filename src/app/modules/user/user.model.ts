@@ -48,4 +48,6 @@ const userSchema = new Schema<IUser>(
   }
 );
 
+userSchema.index({ "name.firstName": 1, "name.lastName": 1 }, { unique: true });
+
 export const User = model("User", userSchema);
