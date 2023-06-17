@@ -7,6 +7,7 @@ const cowSchema = new mongoose_1.Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
     },
     age: {
         type: Number,

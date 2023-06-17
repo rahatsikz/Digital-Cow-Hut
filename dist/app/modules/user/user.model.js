@@ -45,4 +45,5 @@ const userSchema = new mongoose_1.Schema({
         virtuals: true,
     },
 });
+userSchema.index({ "name.firstName": 1, "name.lastName": 1 }, { unique: true });
 exports.User = (0, mongoose_1.model)("User", userSchema);
